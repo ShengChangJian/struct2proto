@@ -8,7 +8,11 @@ def is_vector_define(line):
         return None
     result = re.match(ValuePattern.value_pattern_vector, line)
     if not result:
-        return None
+        result = re.match(ValuePattern.value_pattern_set, line)
+        if not result:
+            result = re.match(ValuePattern.value_pattern_list, line)
+            if not result:
+                return None
     if not result.groupdict().get(ValuePattern.value_name):
         return None
     '''can't solve pointer type'''
@@ -16,6 +20,18 @@ def is_vector_define(line):
         return None
     return result.groupdict()
 
+def is_map_define(line):
+    if not line:
+        return None
+    result = re.match(ValuePattern.value_pattern_map, line)
+    if not result:
+        return None
+    if not result.groupdict().get(ValuePattern.value_name):
+        return None
+    '''can't solve pointer type'''
+    if "*" in result.groupdict().get(ValuePattern.value_type_name):
+        return None
+    return result.groupdict()
 
 def is_value_define(line):
     if not line:
@@ -50,6 +66,23 @@ def is_structhead(line):
 
     return result.groupdict().get(StructPattern.struct_name)
 
+def is_function_head(line):
+    if not line:
+        return None
+    result = re.match(CommonPattern.function_pattern, line)
+    if not result:
+        return None
+
+    return result
+
+def is_enum_head(line):
+    if not line:
+        return None
+    result = re.match(CommonPattern.enum_pattern, line)
+    if not result:
+        return None
+
+    return result
 
 '''travel the file by lines, pick all the value with the start of "TOBYTES" '''
 
@@ -86,9 +119,19 @@ def is_tobytes(line):
 def get_line_type(line):
     if not line:
         return LineType.LINE_OTHER
+
     result = is_structhead(line)
     if result:
         return LineType.LINE_STRUCT
+
+    result = is_function_head(line)
+    if result:
+        return LineType.LINE_FUNCTION
+
+    result = is_enum_head(line)
+    if result:
+        return LineType.LINE_ENUM
+
     result = is_start_or_end_of_struct(line)
     if result:
         return LineType.LINE_STARTOREND_STRUCT
@@ -96,6 +139,10 @@ def get_line_type(line):
     result = is_vector_define(line)
     if result:
         return LineType.LINE_VECTOR
+
+    result = is_map_define(line)
+    if result:
+        return LineType.LINE_MAP
 
     result = is_value_define(line)
     if result:
