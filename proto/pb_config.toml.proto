@@ -1,0 +1,80 @@
+syntax = "proto3";
+package yylive.paint_game;
+import "pb_inner_config.toml.proto";
+import "git.yy.com/golang/gfy_setup/yyp/uri.proto";
+
+>>>>>>>>>>
+#This is the struct2proto config file
+<<<<<<<<<<
+
+>>>>>>>>>>
+[proto_header]
+<<<<<<<<<<
+>>>>>>>>>>
+import = [
+<<<<<<<<<<
+>>>>>>>>>>
+  "git.yy.com/golang/gfy_setup/yyp/uri.proto",
+<<<<<<<<<<
+>>>>>>>>>>
+]
+<<<<<<<<<<
+
+>>>>>>>>>>
+syntax = "proto3"
+<<<<<<<<<<
+>>>>>>>>>>
+package = "yylive.paint_game"
+<<<<<<<<<<
+
+>>>>>>>>>>
+[types]
+<<<<<<<<<<
+>>>>>>>>>>
+  [types.prefix]
+<<<<<<<<<<
+>>>>>>>>>>
+    type_ = ""
+<<<<<<<<<<
+>>>>>>>>>>
+  [types.postfix]
+<<<<<<<<<<
+>>>>>>>>>>
+    _t = ""
+<<<<<<<<<<
+>>>>>>>>>>
+  [types.all]
+<<<<<<<<<<
+>>>>>>>>>>
+    int32_T = "int32"
+<<<<<<<<<<
+
+>>>>>>>>>>
+[RPCs]
+<<<<<<<<<<
+>>>>>>>>>>
+  [RPCs.prefix]
+<<<<<<<<<<
+>>>>>>>>>>
+  [RPCs.postfix]
+<<<<<<<<<<
+>>>>>>>>>>
+    Req = "Rsp"
+<<<<<<<<<<
+>>>>>>>>>>
+  [RPCs.all]
+<<<<<<<<<<
+
+>>>>>>>>>>
+[option]
+<<<<<<<<<<
+>>>>>>>>>>
+yyp-uri = "uri"
+<<<<<<<<<<
+
+>>>>>>>>>>
+[const]
+<<<<<<<<<<
+>>>>>>>>>>
+kMaxType = 1001
+<<<<<<<<<<

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package yylive.paint_game;
+import "pb_inner_test.struct.proto";
+import "git.yy.com/golang/gfy_setup/yyp/uri.proto";
+
+message test {
+enum enum_type   {
+	ok  = 0;
+	fail  = 1;
+	uri  = 356;
+
+};
+    int e = 1;
+    repeated int64 j = 2;
+    repeated map_int_int_ jj = 3;
+    repeated vector_int64_ jjj = 4;
+    map<int,vector_string_> d = 5;
+	option (yyp.uri) = 356;
+}

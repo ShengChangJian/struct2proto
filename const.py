@@ -10,6 +10,10 @@ class LineType:
     LINE_STRUCT = 2              #is a structure
     LINE_STARTOREND_STRUCT = 3   # end of a structure
     LINE_VECTOR = 4              # is a vector
+    LINE_MAP = 5              # is a map
+    LINE_FUNCTION = 6              # is a function
+    LINE_ENUM = 7              # is a function
+    LINE_MAP_MAP = 7              # is a function
     LINE_OTHER = -1
 
 
@@ -18,8 +22,11 @@ class CommonPattern:
         pass
 
     type_name_pattern = r'((\w*)|(_*)|(\d*)|(\+)|( *))\*{0,1}'
+    map_type_name_pattern = r'.*'
     value_name_pattern = r'\*{0,1}(\w*)|(\d*)'
     length_name_pattern = r'((\w)|(\d)|(\+)|_|( ))*'
+    function_pattern = r'( *)((\w*)( *))*\(.*\)'
+    enum_pattern = r'( *)enum( *)'
 
 
 class StructPattern:
@@ -30,7 +37,6 @@ class StructPattern:
     struct_name = 'structName'
     typedef_struct_name = 'typedefStructName'
     struct_name_pattern = r'(typedef)*( *)struct( +)(?P<%s>(%s)){*' % (struct_name, CommonPattern.type_name_pattern)
-
 
 class ValuePattern:
     def __init__(self):
@@ -48,9 +54,17 @@ class ValuePattern:
                                        value_type_array_length_dimen_one, CommonPattern.length_name_pattern,
                                        value_type_array_length_dimen_two, CommonPattern.length_name_pattern)
     value_pattern_vector = r'( *)(vector\<(?P<%s>(%s))\>( +)(?P<%s>(%s)))' \
-                           % (value_type_name, CommonPattern.type_name_pattern, value_name,
+                           % (value_type_name, CommonPattern.map_type_name_pattern, value_name,
                               CommonPattern.value_name_pattern)
-
+    value_pattern_set = r'( *)(set\<(?P<%s>(%s))\>( +)(?P<%s>(%s)))' \
+                           % (value_type_name, CommonPattern.map_type_name_pattern, value_name,
+                              CommonPattern.value_name_pattern)
+    value_pattern_list = r'( *)(list\<(?P<%s>(%s))\>( +)(?P<%s>(%s)))' \
+                           % (value_type_name, CommonPattern.map_type_name_pattern, value_name,
+                              CommonPattern.value_name_pattern)
+    value_pattern_map = r'( *)(map\<(?P<%s>(%s))\>( +)(?P<%s>(%s)))' \
+                           % (value_type_name, CommonPattern.map_type_name_pattern, value_name,
+                              CommonPattern.value_name_pattern)
 
 class Constants:
     def __init__(self):

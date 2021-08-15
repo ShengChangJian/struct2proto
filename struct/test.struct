@@ -1,0 +1,21 @@
+struct test: sox{
+enum  {
+ok = 0,//ok
+fail = 1,
+uri = 1 << 8 | 100
+};
+  int e;
+  vector<int64> j;
+    set<map<int, int> > jj;
+      list<vector<int64> > jjj;
+  //set<map<int, string> > a;
+  //map<int32,map<int, string> > c;
+  map<int, vector<string> > d;
+  //set<vector<int> > f;
+  //vector<map<int, string> > g;
+    //list<map<int, string> > h;
+    int add(int a, int b);
+    void check(string str) {
+    return str;
+    }
+};

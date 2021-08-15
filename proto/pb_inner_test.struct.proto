@@ -1,0 +1,24 @@
+
+syntax = "proto3";
+
+package proto;
+
+message map_int_int_
+{
+	map<int,int> info = 1;
+}
+
+message vector_int64_
+{
+	repeated int64 info = 1;
+}
+
+message vector_string_
+{
+	repeated string info = 1;
+}
+
+message map_int_vector_string__
+{
+	map<int,vector_string_> info = 1;
+}
