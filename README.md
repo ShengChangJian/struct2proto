@@ -1,5 +1,6 @@
-# struct2protocolbuffer
-A method to transform C++ struct to google procolbuffer
+# struct2proto
+A method to transform C++ struct to google procolbuffer.Please install toml module firstly like this: `pip install toml`.
+Then exec follow cmd.
 
 ```shell
 python3 ./StructToProtocol.py ./struct
