@@ -18,3 +18,6 @@ support:
 + it can filter function, note.
 + it support vector, set, list, map etc.
 + it support config as follow: proto\_header, types, RPCs, option, const etc.
+
+not support:
++ const var in struct or out
